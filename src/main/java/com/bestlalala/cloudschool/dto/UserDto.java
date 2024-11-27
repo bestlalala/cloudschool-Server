@@ -7,9 +7,11 @@ import lombok.Data;
 public class UserDto {
     private Long userId;
     private String userName;
+    private String userEmail;
 
     public UserDto(User user) {
         userId = user.getId();
         userName = user.getName();
+        userEmail = user.getEmail();
     }
 }
