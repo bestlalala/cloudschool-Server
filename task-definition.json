@@ -1,8 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:323594814947:task-definition/cloudschool-task:8",
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:323594814947:task-definition/cloudschool-task:12",
     "containerDefinitions": [
         {
             "name": "cloudschool-container",
+            "image": "323594814947.dkr.ecr.ap-northeast-2.amazonaws.com/cloudschool:8f2bdca0245ff2be2d3f909a316473e7d0e54342",
             "cpu": 0,
             "portMappings": [
                 {
@@ -14,7 +15,20 @@
                 }
             ],
             "essential": true,
-            "environment": [],
+            "environment": [
+                {
+                    "name": "DB_USERNAME",
+                    "value": "admin"
+                },
+                {
+                    "name": "DB_URL",
+                    "value": "jdbc:mysql://db-cloudschool.c32se28sk7wh.ap-northeast-2.rds.amazonaws.com:3306/cloudschool"
+                },
+                {
+                    "name": "DB_PASSWORD",
+                    "value": "yslee1234"
+                }
+            ],
             "mountPoints": [],
             "volumesFrom": [],
             "logConfiguration": {
@@ -26,7 +40,8 @@
                     "max-buffer-size": "25m",
                     "awslogs-region": "ap-northeast-2",
                     "awslogs-stream-prefix": "ecs"
-                }
+                },
+                "secretOptions": []
             },
             "systemControls": []
         }
@@ -34,7 +49,7 @@
     "family": "cloudschool-task",
     "executionRoleArn": "arn:aws:iam::323594814947:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 8,
+    "revision": 12,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -80,7 +95,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-11-28T16:57:20.052Z",
-    "registeredBy": "arn:aws:sts::323594814947:assumed-role/cloudschool_cicd/sampleSessionName",
+    "registeredAt": "2024-11-28T17:58:02.904Z",
+    "registeredBy": "arn:aws:iam::323594814947:root",
     "tags": []
 }
