@@ -1,8 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:323594814947:task-definition/cloudschool-task:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:323594814947:task-definition/cloudschool-task:6",
     "containerDefinitions": [
         {
             "name": "cloudschool-container",
+            "image": "323594814947.dkr.ecr.ap-northeast-2.amazonaws.com/cloudschool:d7237a9e547654a1e07bcc618c870f12dfefc643",
             "cpu": 0,
             "portMappings": [
                 {
@@ -37,7 +38,7 @@
     "family": "cloudschool-task",
     "executionRoleArn": "arn:aws:iam::323594814947:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 6,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -83,7 +84,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-11-28T15:10:08.524Z",
+    "registeredAt": "2024-11-28T16:34:47.484Z",
     "registeredBy": "arn:aws:iam::323594814947:root",
     "tags": []
 }
