@@ -16,11 +16,19 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # 2. Spring Boot 애플리케이션 빌드
+      # 2. 환경 변수 설정 (GitHub Secrets에서 가져옴)
+      - name: Set environment variables
+        env:
+          SPRING_DATASOURCE_URL: ${{ secrets.RDS_ENDPOINT }}
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: echo "Environment variables set!"
+
+      # 3. Spring Boot 애플리케이션 빌드
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-        # Gradle 빌드 엑션을 이용해서 프로젝트 빌드
+        # Gradle 빌드 액션을 이용해서 프로젝트 빌드
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2.6.0
         with:
