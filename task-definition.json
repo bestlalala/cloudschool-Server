@@ -3,7 +3,6 @@
     "containerDefinitions": [
         {
             "name": "cloudschool-container",
-            "image": "323594814947.dkr.ecr.ap-northeast-2.amazonaws.com/cloudschool:d7237a9e547654a1e07bcc618c870f12dfefc643",
             "cpu": 0,
             "portMappings": [
                 {
