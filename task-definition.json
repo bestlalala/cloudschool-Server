@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:323594814947:task-definition/cloudschool-task:6",
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:323594814947:task-definition/cloudschool-task:8",
     "containerDefinitions": [
         {
             "name": "cloudschool-container",
-            "image": "323594814947.dkr.ecr.ap-northeast-2.amazonaws.com/cloudschool:d7237a9e547654a1e07bcc618c870f12dfefc643",
+            "image": "323594814947.dkr.ecr.ap-northeast-2.amazonaws.com/cloudschool:200c6d72f72fa552c23bc5bf23a62bd91058d41a",
             "cpu": 0,
             "portMappings": [
                 {
@@ -16,10 +16,8 @@
             ],
             "essential": true,
             "environment": [],
-            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -29,8 +27,7 @@
                     "max-buffer-size": "25m",
                     "awslogs-region": "ap-northeast-2",
                     "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
+                }
             },
             "systemControls": []
         }
@@ -38,7 +35,7 @@
     "family": "cloudschool-task",
     "executionRoleArn": "arn:aws:iam::323594814947:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 6,
+    "revision": 8,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -84,7 +81,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-11-28T16:34:47.484Z",
-    "registeredBy": "arn:aws:iam::323594814947:root",
+    "registeredAt": "2024-11-28T16:57:20.052Z",
+    "registeredBy": "arn:aws:sts::323594814947:assumed-role/cloudschool_cicd/sampleSessionName",
     "tags": []
 }
