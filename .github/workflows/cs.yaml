@@ -3,10 +3,17 @@ on:
   push:
     branches: ["main"]
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   SPRING_DATASOURCE_URL: ${{ secrets.DB_URL }}
   SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
   SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  AWS_REGION: ap-northeast-2
+  ECR_REPOSITORY: cloudschool
+
 
 jobs:
   # Spring Boot 애플리케이션을 빌드하여 도커허브에 푸시하는 과정
@@ -28,3 +35,27 @@ jobs:
       # Spring Boot Application Build
       - name: Build with Gradle
         run: ./gradlew clean build
+
+      # AWS에 로그인
+      - name: AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ screts.IAM_ROLE_ARN }}
+          role-session-name: sampleSessionName
+          aws-region: ap-northeast-2
+
+      # ECR에 로그인
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@62f4f872db3836360b72999f4b87f1ff13310f3a
+
+      # 이미지를 빌드하고 ECR에 푸시
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
