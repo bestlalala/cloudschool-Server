@@ -40,7 +40,7 @@ jobs:
       - name: AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ screts.IAM_ROLE_ARN }}
+          role-to-assume: ${{ secrets.IAM_ROLE_ARN }}
           role-session-name: sampleSessionName
           aws-region: ap-northeast-2
 
