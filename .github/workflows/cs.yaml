@@ -24,12 +24,10 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: echo "Environment variables set!"
 
-      # 3. Spring Boot 애플리케이션 빌드
+      # 3. Spring Boot 애플리케이션 빌드를 위한 권한 부여
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-        # Gradle 빌드 액션을 이용해서 프로젝트 빌드
+      # Spring Boot Application Build
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2.6.0
-        with:
-          arguments: build
+        run: ./gradlew clean build
