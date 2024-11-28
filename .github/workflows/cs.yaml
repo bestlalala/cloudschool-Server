@@ -14,7 +14,7 @@ env:
   AWS_REGION: ap-northeast-2
   ECR_REPOSITORY: cloudschool
   ECS_CLUSTER: cloudschool_CICD
-  ECS_SERVICE: cloudschool_nginxService
+  ECS_SERVICE: clouschool_nginxService
   CONTAINER_NAME: nginx-container
   ECS_TASK_DEFINITION: ./task-definition.json
 
