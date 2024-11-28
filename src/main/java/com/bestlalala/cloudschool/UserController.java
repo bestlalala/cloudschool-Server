@@ -16,7 +16,6 @@ public class UserController {
     private final UserService userService;
 
     /* User 테이블 전체 조회 API */
-    @CrossOrigin(origins = "http://cloudschool-bucket.s3-website.ap-northeast-2.amazonaws.com")  // React 앱 주소로 CORS 허용
     @GetMapping("/")
     public ResponseEntity<List<UserDto>> getUserInfo() {
         List<UserDto> allUsers = userService.findAllUsers();
