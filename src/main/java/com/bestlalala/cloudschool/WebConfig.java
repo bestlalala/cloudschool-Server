@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*") // 모든 출처 허용
+                        .allowedOrigins("http://cloudschool-web.s3-website.ap-northeast-2.amazonaws.com") // S3에 배포한 React 웹 출처 허용
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 허용할 HTTP 메소드 지정
                         .allowedHeaders("*")
                         .allowCredentials(false); // 쿠키를 포함할지 여부 설정
