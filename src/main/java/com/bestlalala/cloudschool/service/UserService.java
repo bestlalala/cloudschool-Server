@@ -1,7 +1,7 @@
-package com.bestlalala.cloudschool;
+package com.bestlalala.cloudschool.service;
 
-import com.bestlalala.cloudschool.domain.User;
 import com.bestlalala.cloudschool.dto.UserDto;
+import com.bestlalala.cloudschool.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

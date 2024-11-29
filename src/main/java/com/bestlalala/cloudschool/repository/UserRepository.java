@@ -1,4 +1,4 @@
-package com.bestlalala.cloudschool;
+package com.bestlalala.cloudschool.repository;
 
 import com.bestlalala.cloudschool.domain.User;
 import com.bestlalala.cloudschool.dto.UserDto;

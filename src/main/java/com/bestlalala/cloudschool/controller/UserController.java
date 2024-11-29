@@ -1,11 +1,10 @@
-package com.bestlalala.cloudschool;
+package com.bestlalala.cloudschool.controller;
 
+import com.bestlalala.cloudschool.service.UserService;
 import com.bestlalala.cloudschool.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
