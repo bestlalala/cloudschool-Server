@@ -16,7 +16,7 @@ env:
   ECS_CLUSTER: cloudschool_CICD
   ECS_SERVICE: cloudschool_Service
   CONTAINER_NAME: cloudschool-container
-  ECS_TASK_DEFINITION: ./task-definition.json
+  ECS_TASK_DEFINITION_NAME: cloudschool-task
 
 
 jobs:
@@ -64,12 +64,20 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-      # task를 수정하는 작업
+      # Task 정의 템플릿 다운로드
+      - name: Download Task Definition Template
+        run: |
+          aws ecs describe-task-definition \
+            --task-definition ${{ env.ECS_TASK_DEFINITION_NAME }} \
+            --query taskDefinition \
+            > task-definition.json
+
+      # Task 정의 업데이트
       - name: Fill in the new image ID in the Amazon ECS Task Definition
         id: task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@c804dfbdd57f713b6c079302a4c01db7017a36fc
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: ${{ env.ECS_TASK_DEFINITION }}
+          task-definition: task-definition.json
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
 
