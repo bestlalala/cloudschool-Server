@@ -3,11 +3,11 @@
 이 문서에서는 프로젝트의 주요 기능, 기술 스택, API 명세 및 실행 방법에 대해 설명합니다. <br/>
 
 
-## 주요 기능
+## 🔵 주요 기능
 - 사용자(User) 목록 전체 조회: 간단한 GET 요청으로 모든 사용자의 정보를 가져올 수 있습니다.
 <br/>
 
-## 기술 스택
+## 🛠️ 기술 스택
 - Language: Java 17
 - Framework: Spring Boot 3.x
 - Database: AWS RDS (MySQL)
@@ -18,7 +18,7 @@
 
 <br/>
 
-## API 명세
+## 📝 API 명세
 ### 1. 사용자 목록 전체 조회
 - URL: `/`
 - Method: `GET`
@@ -48,14 +48,14 @@
 
 ---
 
-## 배포 URL
+## 🔵 배포 URL
 애플리케이션은 아래 로드 밸런서를 통해 접근할 수 있습니다. <br/>
 http://cloudschoolelb-552622718.ap-northeast-2.elb.amazonaws.com/
 <br/>
 <br/>
 
 
-## 설치 및 실행 가이드
+## 🔵 설치 및 실행 가이드
 ### 1. Git 레포 clone
 ``` bash
 git clone https://github.com/bestlalala/cloudschool-Server.git
